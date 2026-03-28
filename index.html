@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultana Atti — Performance Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── SYSTEM THEME ──────────────────────────────────────── */
+:root {
+  --bg:       #0a0a0a;
+  --surface:  #111111;
+  --surface2: #191919;
+  --border:   #222222;
+  --border2:  #2e2e2e;
+  --text:     #f5f2ee;
+  --muted:    #777;
+  --accent:   #3B82F6;       /* electric blue — replaces old green */
+  --accent2:  #60A5FA;       /* lighter blue for hover/secondary */
+  --accent-dim: rgba(59,130,246,0.10);
+  --accent-border: rgba(59,130,246,0.25);
+  --num-col:  #3B82F6;       /* all key numbers same color */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:       #fafafa;
+    --surface:  #ffffff;
+    --surface2: #f3f4f6;
+    --border:   #e5e7eb;
+    --border2:  #d1d5db;
+    --text:     #0f0f0f;
+    --muted:    #6b7280;
+    --accent:   #2563EB;
+    --accent2:  #3B82F6;
+    --accent-dim: rgba(37,99,235,0.07);
+    --accent-border: rgba(37,99,235,0.2);
+    --num-col:  #2563EB;
+  }
+}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 60px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.nav-identity { display: flex; flex-direction: column; gap: 1px; }
+
+.nav-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.nav-name span { color: var(--accent); }
+
+.nav-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+.nav-logo[src="logo.png"] { display: none; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--text); }
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle dot grid */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border2) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* blue glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0 60px;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.eyebrow-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(64px, 10vw, 130px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin-bottom: 36px;
+  animation: fadeUp 0.5s ease 0.08s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.75;
+  border-left: 2px solid var(--accent);
+  padding-left: 18px;
+  animation: fadeUp 0.5s ease 0.16s both;
+}
+
+/* ── HERO CREDENTIALS ROW ──────────────────────────────── */
+.hero-creds {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  margin: 0 -60px;
+}
+
+.hero-cred {
+  padding: 32px 40px;
+  border-right: 1px solid var(--border);
+  animation: fadeUp 0.6s ease both;
+  transition: background 0.2s;
+}
+
+.hero-cred:hover { background: var(--surface2); }
+.hero-cred:last-child { border-right: none; }
+.hero-cred:nth-child(2) { animation-delay: 0.08s; }
+.hero-cred:nth-child(3) { animation-delay: 0.16s; }
+.hero-cred:nth-child(4) { animation-delay: 0.24s; }
+
+.cred-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--num-col);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.cred-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── SECTION SHARED ────────────────────────────────────── */
+section { padding: 96px 60px; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 52px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.services-section {
+  background: var(--surface);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.service-item {
+  background: var(--surface);
+  padding: 36px 32px;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover { background: var(--surface2); }
+.service-item:hover::after { transform: scaleX(1); }
+
+.service-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.service-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── CASES ─────────────────────────────────────────────── */
+.cases-section { background: var(--bg); }
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.case-card {
+  background: var(--surface);
+  padding: 44px;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-card:hover { background: var(--surface2); }
+
+.case-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.case-card:hover::before { transform: scaleX(1); }
+
+.case-card.featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  background: var(--surface2);
+}
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.case-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.case-niche {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--accent-dim);
+  padding: 4px 10px;
+  border: 1px solid var(--accent-border);
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.case-period {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 22px;
+}
+
+.featured-metrics { grid-template-columns: repeat(3, 1fr); }
+
+.metric { background: var(--bg); padding: 15px 17px; }
+.case-card.featured .metric { background: var(--surface); }
+
+.metric-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--num-col);           /* all metric numbers same color */
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.metric-key {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.case-insight {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  border-left: 2px solid var(--border2);
+  padding-left: 14px;
+}
+
+.case-insight strong { color: var(--text); font-weight: 500; }
+
+.badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-dim);
+  margin-top: 14px;
+}
+
+/* ── TABLE ─────────────────────────────────────────────── */
+.table-section { background: var(--surface); }
+
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+
+thead tr { border-bottom: 1px solid var(--accent-border); }
+
+th {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  padding: 16px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+tbody tr:hover td { background: var(--surface2); }
+
+.td-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.td-accent { color: var(--num-col); font-weight: 500; }
+.td-dim    { color: var(--muted); font-size: 12px; }
+
+.td-tag {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent2);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  padding: 3px 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* ── CTA ───────────────────────────────────────────────── */
+.cta-section {
+  background: var(--bg);
+  text-align: center;
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.cta-line { width: 32px; height: 1px; background: var(--accent); }
+
+.cta-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.cta-title em { font-style: italic; color: var(--accent); }
+
+.cta-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 48px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+}
+
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  padding: 14px 32px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border2);
+}
+
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 60px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  background: var(--surface);
+}
+
+.footer-identity { display: flex; flex-direction: column; gap: 3px; }
+
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.footer-name span { color: var(--accent); }
+
+.footer-role {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.footer-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.65;
+  justify-self: center;
+}
+
+.footer-logo[src="logo.png"] { display: none; }
+
+.footer-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav, section, footer { padding-left: 24px; padding-right: 24px; }
+  .hero { padding: 0 24px; }
+  .hero-creds { margin: 0 -24px; grid-template-columns: repeat(2, 1fr); }
+  .cases-grid { grid-template-columns: 1fr; }
+  .case-card.featured { grid-template-columns: 1fr; gap: 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .featured-metrics { grid-template-columns: repeat(2, 1fr); }
+  footer { grid-template-columns: 1fr; text-align: center; }
+  .footer-note { text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .hero-creds { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 56px; }
+  .nav-links { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-identity">
+    <div class="nav-name">Sultana <span>Atti</span></div>
+    <div class="nav-sub">Performance Marketer · Meta Ads</div>
+  </div>
+  <img src="logo.png" class="nav-logo" alt="Sultana Atti" onerror="this.style.display='none'">
+  <div class="nav-links">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#work" class="nav-link">Work</a>
+    <a href="#overview" class="nav-link">Overview</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot"></div>
+      <span class="eyebrow-text">Performance Marketing Portfolio · 2024–2026</span>
+    </div>
+    <h1 class="hero-title">
+      Results<br>
+      <em>not</em><br>
+      Reports.
+    </h1>
+    <p class="hero-sub">
+      10 brands. Fashion, skincare, F&amp;B, education, and more. Every number pulled directly from Meta Ads Manager — nothing estimated, nothing inflated.
+    </p>
+  </div>
+
+  <div class="hero-creds">
+    <div class="hero-cred">
+      <div class="cred-num">10+</div>
+      <div class="cred-label">Brands Managed</div>
+    </div>
+    <div class="hero-cred">
+      <div class="cred-num">$4.5K+</div>
+      <div class="cred-label">Spend Managed</div>
+    </div>
+    <div class="hero-cred">
+      <div class="cred-num">5.5M+</div>
+      <div class="cred-label">Total Impressions</div>
+    </div>
+    <div class="hero-cred">
+      <div class="cred-num">$0.07</div>
+      <div class="cred-label">Lowest CPC Achieved</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <h2 class="section-title">What I Offer</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <span class="service-icon">⚡</span>
+      <div class="service-name">Campaign Strategy</div>
+      <p class="service-desc">Full-funnel planning from awareness to conversion — built around your goal, audience, and budget. No templates.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Precision Targeting</div>
+      <p class="service-desc">Interest stacking, lookalikes, retargeting, and smart exclusions — so every dollar reaches the right person.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">📊</span>
+      <div class="service-name">Performance Reporting</div>
+      <p class="service-desc">Clear reports on CPM, CPR, reach, and engagement — showing exactly what your budget is doing and why.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">✍️</span>
+      <div class="service-name">Creative Direction</div>
+      <p class="service-desc">Hooks, offer framing, and CTA copy briefs for Meta — because great targeting fails with weak creative.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🔁</span>
+      <div class="service-name">Testing &amp; Optimisation</div>
+      <p class="service-desc">Systematic A/B testing of creatives, audiences, and objectives to continuously lower cost-per-result.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🛍️</span>
+      <div class="service-name">Verticals I Serve</div>
+      <p class="service-desc">eCommerce, fashion, skincare, F&amp;B, cafés, home decor, education, student housing — Jordan &amp; MENA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · CASE STUDIES -->
+<section class="cases-section" id="work">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <h2 class="section-title">Case Studies</h2>
+  </div>
+
+  <div class="cases-grid">
+
+    <!-- SKINCARE — Featured -->
+    <div class="case-card featured">
+      <div>
+        <div class="case-header">
+          <div class="case-brand">Personal Care Brand</div>
+          <div class="case-niche">Skincare / eCommerce</div>
+        </div>
+        <div class="case-period">▸ Dec 3, 2025 – Mar 2026 · 12 campaigns · Fb &amp; IG</div>
+        <p class="case-insight">
+          A skincare &amp; acne care brand needing both mass awareness and direct buyer conversations. Built a <strong>dual-objective structure</strong> — broad awareness alongside conversion-focused messaging. Delivered 2.5M+ impressions at <strong>$1.18 CPM</strong> while generating <strong>1,767 qualified conversations</strong> within a $2,987 total budget.
+        </p>
+        <div class="badge">★ Largest Account Managed</div>
+      </div>
+      <div>
+        <div class="case-metrics featured-metrics">
+          <div class="metric"><div class="metric-val">$2,987</div><div class="metric-key">Total Spent</div></div>
+          <div class="metric"><div class="metric-val">2.5M</div><div class="metric-key">Impressions</div></div>
+          <div class="metric"><div class="metric-val">1.1M</div><div class="metric-key">Reach</div></div>
+          <div class="metric"><div class="metric-val">1,767</div><div class="metric-key">Messages Started</div></div>
+          <div class="metric"><div class="metric-val">$1.18</div><div class="metric-key">Avg CPM</div></div>
+          <div class="metric"><div class="metric-val">$1.87</div><div class="metric-key">Avg CPR</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASHION CLOTHING — Featured -->
+    <div class="case-card featured">
+      <div>
+        <div class="case-header">
+          <div class="case-brand">Fashion Clothing Brand</div>
+          <div class="case-niche">Fashion / eCommerce</div>
+        </div>
+        <div class="case-period">▸ Oct 2024 · Reach objective · Multi-region Jordan</div>
+        <p class="case-insight">
+          A clothing brand targeting buyers across multiple Jordanian governorates. Reached <strong>143,340 unique people on a $52.60 budget</strong> — a CPM of <strong>$0.22</strong>, the lowest in the portfolio. Generated 8,054 post engagements across 240K impressions.
+        </p>
+        <div class="badge">★ Lowest CPM in Portfolio — $0.22</div>
+      </div>
+      <div>
+        <div class="case-metrics featured-metrics">
+          <div class="metric"><div class="metric-val">$52.60</div><div class="metric-key">Total Spent</div></div>
+          <div class="metric"><div class="metric-val">240K</div><div class="metric-key">Impressions</div></div>
+          <div class="metric"><div class="metric-val">143K</div><div class="metric-key">Reach</div></div>
+          <div class="metric"><div class="metric-val">$0.22</div><div class="metric-key">CPM</div></div>
+          <div class="metric"><div class="metric-val">8,054</div><div class="metric-key">Engagements</div></div>
+          <div class="metric"><div class="metric-val">1.68×</div><div class="metric-key">Frequency</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOME DECOR -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Home Decor Brand</div>
+        <div class="case-niche">Home Decor / B2C</div>
+      </div>
+      <div class="case-period">▸ Nov 12, 2025 – Mar 2026 · 6 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">583</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$0.43</div><div class="metric-key">Best CPR</div></div>
+        <div class="metric"><div class="metric-val">122K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$320</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">Targeted homeowners &amp; newly-married couples. <strong>583 qualified buyer conversations</strong> with a best CPR of <strong>$0.43</strong>.</p>
+    </div>
+
+    <!-- PREMIUM DATES -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Premium Dates Brand</div>
+        <div class="case-niche">Food &amp; Beverage</div>
+      </div>
+      <div class="case-period">▸ Dec 14, 2025 – Mar 2026 · 8 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">404</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$0.38</div><div class="metric-key">Best CPR</div></div>
+        <div class="metric"><div class="metric-val">121K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$283</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">Split campaigns across general &amp; breakfast audiences — <strong>best CPR hit $0.38</strong> reaching 79K unique users.</p>
+    </div>
+
+    <!-- HANDCRAFT -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Handcraft Fashion Brand</div>
+        <div class="case-niche">Artisan / Fashion</div>
+      </div>
+      <div class="case-period">▸ Dec 4, 2025 – Mar 2026 · 8 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">293</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$0.34</div><div class="metric-key">Best CPR</div></div>
+        <div class="metric"><div class="metric-val">63K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$164</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">Niche embroidery &amp; artisan brand. Scaled from basic boosting to full segmented strategy — best CPR down to <strong>$0.34</strong>.</p>
+    </div>
+
+    <!-- STUDENT DORM -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Student Dormitory</div>
+        <div class="case-niche">Student Housing / Lead Gen</div>
+      </div>
+      <div class="case-period">▸ Long-term client · Feb 2023 – ongoing · 9 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">408</div><div class="metric-key">Enquiries</div></div>
+        <div class="metric"><div class="metric-val">$0.24</div><div class="metric-key">Best CPR</div></div>
+        <div class="metric"><div class="metric-val">153K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$202</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight"><strong>2+ years</strong> of ongoing seasonal campaigns. Consistently hit <strong>$0.24 best CPR</strong> — the strongest lead gen efficiency in the portfolio.</p>
+      <div class="badge">★ 2+ Year Client Retention</div>
+    </div>
+
+    <!-- EDUCATIONAL INSTITUTION -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Educational Institution</div>
+        <div class="case-niche">Education / Lead Gen</div>
+      </div>
+      <div class="case-period">▸ Nov 1 – Nov 27, 2024 · 27-day campaign</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">595</div><div class="metric-key">Link Clicks</div></div>
+        <div class="metric"><div class="metric-val">$0.07</div><div class="metric-key">Cost Per Click</div></div>
+        <div class="metric"><div class="metric-val">151K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$79.72</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">595 clicks at <strong>$0.07 CPC</strong>. Meta rated the ad <strong>Above Average</strong> on all three quality diagnostics.</p>
+      <div class="badge">★ Above Average — All 3 Meta Rankings</div>
+    </div>
+
+    <!-- MENSWEAR -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Menswear Brand</div>
+        <div class="case-niche">Fashion / Menswear</div>
+      </div>
+      <div class="case-period">▸ Oct 21, 2025 – Mar 2026 · 9 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">296</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$1.52</div><div class="metric-key">Avg CPM</div></div>
+        <div class="metric"><div class="metric-val">58K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$89</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">Premium suits brand. Mixed engagement &amp; messaging campaigns — <strong>296 buyer conversations</strong> on an $89 budget at $1.52 CPM.</p>
+    </div>
+
+    <!-- HOMEMADE BAKERY -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Homemade Bakery</div>
+        <div class="case-niche">Café / F&amp;B</div>
+      </div>
+      <div class="case-period">▸ Feb 8, 2026 – Mar 2026 · New launch</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">25</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$0.82</div><div class="metric-key">CPR</div></div>
+        <div class="metric"><div class="metric-val">16K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$41</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">Homemade brownie &amp; dessert brand. <strong>25 order enquiries in under 30 days</strong> on a $41 test budget — strong proof of concept.</p>
+    </div>
+
+    <!-- FURNITURE -->
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-brand">Wood Furniture Brand</div>
+        <div class="case-niche">Furniture / Home</div>
+      </div>
+      <div class="case-period">▸ Dec 4, 2025 – Mar 2026 · 3 campaigns</div>
+      <div class="case-metrics">
+        <div class="metric"><div class="metric-val">69</div><div class="metric-key">Messages</div></div>
+        <div class="metric"><div class="metric-val">$1.84</div><div class="metric-key">Best CPR</div></div>
+        <div class="metric"><div class="metric-val">34K</div><div class="metric-key">Impressions</div></div>
+        <div class="metric"><div class="metric-val">$166</div><div class="metric-key">Total Spent</div></div>
+      </div>
+      <p class="case-insight">High-consideration furniture brand. Prioritised audience quality over volume — <strong>69 high-intent buyer conversations</strong>.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 03 · FULL OVERVIEW TABLE -->
+<section class="table-section" id="overview">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2 class="section-title">Full Overview</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Niche</th>
+          <th>Duration</th>
+          <th>Spend</th>
+          <th>Impressions</th>
+          <th>Reach</th>
+          <th>Key Result</th>
+          <th>Best CPR</th>
+          <th>Avg CPM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-brand">Personal Care Brand</td>
+          <td><span class="td-tag">Skincare</span></td>
+          <td class="td-dim">Dec 25 – Mar 26</td>
+          <td class="td-accent">$2,987</td>
+          <td>2,526,841</td>
+          <td>1,113,916</td>
+          <td class="td-accent">1,767 messages</td>
+          <td class="td-dim">—</td>
+          <td class="td-accent">$1.18</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Fashion Clothing</td>
+          <td><span class="td-tag">Fashion</span></td>
+          <td class="td-dim">Oct 2024</td>
+          <td class="td-accent">$52.60</td>
+          <td>240,270</td>
+          <td>143,340</td>
+          <td class="td-accent">8,054 engagements</td>
+          <td class="td-dim">—</td>
+          <td class="td-accent">$0.22</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Home Decor Brand</td>
+          <td><span class="td-tag">Home Decor</span></td>
+          <td class="td-dim">Nov 25 – Mar 26</td>
+          <td class="td-accent">$320</td>
+          <td>122,628</td>
+          <td>56,462</td>
+          <td class="td-accent">583 messages</td>
+          <td class="td-accent">$0.43</td>
+          <td>$2.61</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Premium Dates Brand</td>
+          <td><span class="td-tag">F&amp;B</span></td>
+          <td class="td-dim">Dec 25 – Mar 26</td>
+          <td class="td-accent">$283</td>
+          <td>121,138</td>
+          <td>79,545</td>
+          <td class="td-accent">404 messages</td>
+          <td class="td-accent">$0.38</td>
+          <td>$2.34</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Handcraft Fashion</td>
+          <td><span class="td-tag">Artisan</span></td>
+          <td class="td-dim">Dec 25 – Mar 26</td>
+          <td class="td-accent">$164</td>
+          <td>63,292</td>
+          <td>37,907</td>
+          <td class="td-accent">293 messages</td>
+          <td class="td-accent">$0.34</td>
+          <td>$2.59</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Student Dormitory</td>
+          <td><span class="td-tag">Housing</span></td>
+          <td class="td-dim">Feb 23 – ongoing</td>
+          <td class="td-accent">$202</td>
+          <td>153,300</td>
+          <td>71,966</td>
+          <td class="td-accent">408 enquiries</td>
+          <td class="td-accent">$0.24</td>
+          <td>$1.32</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Educational Institution</td>
+          <td><span class="td-tag">Education</span></td>
+          <td class="td-dim">Nov 2024 · 27 days</td>
+          <td class="td-accent">$79.72</td>
+          <td>151,550</td>
+          <td>49,746</td>
+          <td class="td-accent">595 link clicks</td>
+          <td class="td-accent">$0.07 CPC</td>
+          <td>$0.53</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Menswear Brand</td>
+          <td><span class="td-tag">Fashion</span></td>
+          <td class="td-dim">Oct 25 – Mar 26</td>
+          <td class="td-accent">$89</td>
+          <td>58,554</td>
+          <td>35,031</td>
+          <td class="td-accent">296 messages</td>
+          <td class="td-dim">—</td>
+          <td>$1.52</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Homemade Bakery</td>
+          <td><span class="td-tag">Café / F&amp;B</span></td>
+          <td class="td-dim">Feb – Mar 2026</td>
+          <td class="td-accent">$41</td>
+          <td>16,460</td>
+          <td>8,770</td>
+          <td class="td-accent">25 messages</td>
+          <td class="td-accent">$0.82</td>
+          <td>$2.49</td>
+        </tr>
+        <tr>
+          <td class="td-brand">Wood Furniture Brand</td>
+          <td><span class="td-tag">Furniture</span></td>
+          <td class="td-dim">Dec 25 – Mar 26</td>
+          <td class="td-accent">$166</td>
+          <td>34,190</td>
+          <td>20,516</td>
+          <td class="td-accent">69 messages</td>
+          <td class="td-accent">$1.84</td>
+          <td>$4.86</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-eyebrow">
+    <div class="cta-line"></div>
+    <span class="cta-label">Ready to work together</span>
+    <div class="cta-line"></div>
+  </div>
+  <h2 class="cta-title">
+    Let's grow<br><em>your brand.</em>
+  </h2>
+  <p class="cta-sub">
+    I take on a limited number of clients each month to make sure every account gets real attention and real results.
+  </p>
+  <div class="cta-btns">
+    <a href="mailto:sultanaatti12@email.com" class="btn btn-primary">Get in Touch →</a>
+    <a href="#work" class="btn btn-outline">View Case Studies</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-identity">
+    <div class="footer-name">Sultana <span>Atti</span></div>
+    <div class="footer-role">Performance Marketer · Meta Ads Specialist</div>
+  </div>
+  <img src="logo.png" class="footer-logo" alt="Sultana Atti" onerror="this.style.display='none'">
+  <div class="footer-note">
+    Meta Ads · 2024–2026<br>
+    All data from Ads Manager
+  </div>
+</footer>
+
+</body>
+</html>
